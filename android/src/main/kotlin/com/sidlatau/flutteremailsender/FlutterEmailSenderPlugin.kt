@@ -1,6 +1,7 @@
 package com.sidlatau.flutteremailsender
 
 import android.content.Intent
+import android.net.Uri
 import androidx.core.content.FileProvider
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -37,7 +38,8 @@ class FlutterEmailSenderPlugin(private val registrar: Registrar) : MethodCallHan
         val context = registrar.activity() ?: registrar.context()
         val flags = if (registrar.activity() != null) 0 else Intent.FLAG_ACTIVITY_NEW_TASK
 
-        val intent = Intent(Intent.ACTION_SEND)
+        val intent = Intent(Intent.ACTION_SENDTO)
+        intent.data = Uri.parse("mailto:")
         intent.addFlags(flags)
 
         intent.type = "vnd.android.cursor.dir/email"
