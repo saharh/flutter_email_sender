@@ -42,7 +42,7 @@ class FlutterEmailSenderPlugin(private val registrar: Registrar) : MethodCallHan
         intent.data = Uri.parse("mailto:")
         intent.addFlags(flags)
 
-        intent.type = "vnd.android.cursor.dir/email"
+//        intent.type = "vnd.android.cursor.dir/email"
 
 
         if (options.hasArgument(SUBJECT)) {
