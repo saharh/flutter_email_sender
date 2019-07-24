@@ -1,3 +1,15 @@
+## 2.0.3
+
+* Finished migration to Android X.
+
+## 2.0.2
+
+* Configured external files path for FileProvider (Issue #10).
+
+## 2.0.1
+
+* Finish future when email screen is closed. (Issue #15).
+
 ## 2.0.0
 
 * Migrated to AndroidX.
