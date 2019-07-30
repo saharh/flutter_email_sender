@@ -1,7 +1,6 @@
 package com.sidlatau.flutteremailsender
 
 import android.content.Intent
-import android.net.Uri
 import androidx.core.content.FileProvider
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -48,11 +47,13 @@ class FlutterEmailSenderPlugin(private val registrar: Registrar)
             callback.error("error", "Activity == null!", null)
         }
 
-        val intent = Intent(Intent.ACTION_SENDTO)
-        intent.data = Uri.parse("mailto:")
+//        val intent = Intent(Intent.ACTION_SENDTO)
+//        intent.data = Uri.parse("mailto:")
+
+        val intent = Intent(Intent.ACTION_SEND)
 
 
-//        intent.type = "vnd.android.cursor.dir/email"
+        intent.type = "vnd.android.cursor.dir/email"
 
 
         if (options.hasArgument(SUBJECT)) {
@@ -89,7 +90,7 @@ class FlutterEmailSenderPlugin(private val registrar: Registrar)
         }
 
         if (options.hasArgument(ATTACHMENT_PATH)) {
-            val attachmentPath = options.argument(ATTACHMENT_PATH) as String?
+            val attachmentPath = options.argument<String>(ATTACHMENT_PATH)
             if (attachmentPath != null) {
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
