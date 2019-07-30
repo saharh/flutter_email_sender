@@ -89,7 +89,7 @@ class FlutterEmailSenderPlugin(private val registrar: Registrar)
         }
 
         if (options.hasArgument(ATTACHMENT_PATH)) {
-            val attachmentPath = options.argument<String>(ATTACHMENT_PATH)
+            val attachmentPath = options.argument(ATTACHMENT_PATH) as String?
             if (attachmentPath != null) {
                 intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
